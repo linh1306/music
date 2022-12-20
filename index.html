@@ -12,17 +12,27 @@
     <title>Document</title>
     <script>
         $(document).ready(function(){
-            $('#menu').click(function(){
-                $()
+            $('#toggle').click(function(){
+                $('nav').slideToggle();
             })
         })
     </script>
 </head>
 <body>
     <div class="container">
-        <nav id="menu">
-            <i class="far fa-bars"></i>
-        </nav>
+        <div class="menu">
+            <div id="toggle" class="mn__ls-item">
+                <i class="far fa-bars"></i>
+            </div>
+            <nav>
+                <ul id="menu__list">
+                    <li class="mn__ls-item"></li>
+                    <li class="mn__ls-item"></li>
+                    <li class="mn__ls-item"></li>
+                </ul>
+            </nav>
+
+        </div>
         <div class="list">
             <div class="list__hder">
                 <p>danh sách</p>
