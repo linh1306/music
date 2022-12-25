@@ -1,23 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/basic.css">
-    <link rel="stylesheet" href="js/basic.js">
+
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v5.15.4/css/all.css">
-    <script src="https://code.jquery.com/jquery-3.6.2.js" integrity="sha256-pkn2CUZmheSeyssYw3vMp1+xyub4m+e+QK4sQskvuo4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.2.js"
+        integrity="sha256-pkn2CUZmheSeyssYw3vMp1+xyub4m+e+QK4sQskvuo4=" crossorigin="anonymous"></script>
     <title>Document</title>
-    <script>
+    <!-- <script>
         $(document).ready(function(){
             $('#toggle').click(function(){
                 $('nav').slideToggle();
             })
         })
-    </script>
+    </script> -->
 </head>
+
 <body>
     <div class="container">
         <div class="menu">
@@ -39,25 +42,27 @@
             </div>
         </div>
         <div class="play">
-            <audio controls >
-                <source src="../music/lily.mp3">
-            </audio>
+            <audio id="myAudio"  src="music/lily.mp3" ontimeupdate="updateTimeDisplay()"></audio>
         </div>
+        <div id="name">lily.mp3</div>
+        <div id="time">0:00 / 0:00</div>
         <div class="console">
             <ul class="csl__button">
                 <li class="button">
                     <i class="fal fa-caret-left"></i>
                 </li>
-                <li class="button">
-                    <i class="fal fa-play-circle"></i>
+                <li class="button" onclick="playPause()">
+                    <i id="Pause/Play" class="fal fa-pause-circle" ></i>
                 </li>
-                <li class="button">
+                <li class="button" onclick="next()">
                     <i class="fal fa-caret-right"></i>
                 </li>
             </ul>
         </div>
     </div>
+
+
 </body>
+<script src="js/basic.js"></script>
+<script src="js/readfile.js"></script>
 </html>
-
-
