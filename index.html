@@ -22,7 +22,7 @@
 </head>
 
 <body>
-    <audio id="myAudio"  src="music/cố giang tình.mp3" ontimeupdate="updateTimeDisplay()"></audio>
+    <audio id="myAudio" src="music/cố giang tình.mp3" ontimeupdate="updateTimeDisplay()"></audio>
     <div class="container">
         <div class="menu">
             <div id="toggle" class="mn__ls-item">
@@ -43,18 +43,22 @@
             </div>
 
             <div class="scrollbar" id="style-2">
+                <!-- add item music -->
+
                 <div class="force-overflow"></div>
             </div>
-            
+
             <div class="console">
-                <div id="name"><p>cố giang tình</p></div>
+                <div id="name">
+                    <p>cố giang tình</p>
+                </div>
                 <div id="time">0:00 / 0:00</div>
                 <ul class="csl__button">
                     <li class="button">
                         <i class="fal fa-caret-left"></i>
                     </li>
                     <li class="button" onclick="playPause()">
-                        <i id="Pause/Play" class="fal fa-pause-circle" ></i>
+                        <i id="Pause/Play" class="fal fa-pause-circle"></i>
                     </li>
                     <li class="button" onclick="next()">
                         <i class="fal fa-caret-right"></i>
@@ -67,5 +71,5 @@
 
 </body>
 <script src="js/basic.js"></script>
-<script src="js/readfile.js"></script>
+
 </html>

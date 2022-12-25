@@ -80,17 +80,32 @@ var us_musics = [
 
 ];
 
+var favorites_music = [];
+
 var music_running = 0;
 
-musics = vn_musics.concat(tq_musics,us_musics);
+musics = vn_musics.concat(tq_musics, us_musics);
 
+
+var i = 0;
 musics.forEach(item => {
     const main = document.getElementById("style-2");
-    if(main){
+    if (main) {
+        var name_id = "ms" + i.toString();
         const item_list = document.createElement("div");
         item_list.classList.add('list__item');
-        item_list.innerHTML = `<p onclick="nextTo('${item}')">${item}</p>`;
+        item_list.id = name_id;
+        item_list.innerHTML = `
+                <div class="list__item-name" onclick="nextTo('${item}')">
+                    <i class="fal fa-list-music"></i>
+                    <p>${item}</p>
+                </div>
+
+                <i id="${name_id}-heart" class="far fa-heart bt_list_item" onclick="add_remove_heart('${name_id}-heart')"></i>
+                <i class="fas fa-times bt_list_item" onclick="remove_item('${name_id}', '${item}')"></i> 
+        `;
         main.appendChild(item_list);
+        i+=1;
     }
 });
 
@@ -100,7 +115,7 @@ function updateTimeDisplay() {
     var currentTime = audio.currentTime;
     var duration = audio.duration;
     document.getElementById("time").innerHTML = formatTime(currentTime) + " / " + formatTime(duration);
-    if(formatTime(currentTime) == formatTime(duration)){
+    if (formatTime(currentTime) == formatTime(duration)) {
         next();
     }
 }
@@ -127,10 +142,10 @@ function playPause() {
 
 function next() {
     var audio = document.getElementById("myAudio");
-    if(music_running == musics.length -1){
+    if (music_running == musics.length - 1) {
         music_running = 0;
     }
-    else{
+    else {
         music_running = music_running + 1;
     }
     var link = "music/" + musics[music_running] + ".mp3";
@@ -139,10 +154,30 @@ function next() {
     audio.play();
 }
 
-function nextTo(link){
+function nextTo(link) {
     document.getElementById("name").innerHTML = link;
     var audio = document.getElementById("myAudio");
     link = "music/" + link + ".mp3";
     audio.src = link;
     audio.play();
+}
+
+function add_remove_heart(name_id) {
+    var name_class = document.getElementById(name_id).className;
+    if (name_class == "far fa-heart bt_list_item") {
+        document.getElementById(name_id).className = "fas fa-heart color_heart";
+    }
+    else {
+        document.getElementById(name_id).className = "far fa-heart bt_list_item";
+    }
+}
+
+function remove_item(id, name) {
+    var main = document.getElementById("style-2");
+    var item = document.getElementById(id);
+    main.removeChild(item);
+    var index = musics.indexOf(name);
+    if (index >= 0) {
+        musics.splice(index, 1);
+    }
 }
