@@ -84,6 +84,17 @@ var music_running = 0;
 
 musics = vn_musics.concat(tq_musics,us_musics);
 
+musics.forEach(item => {
+    const main = document.getElementById("style-2");
+    if(main){
+        const item_list = document.createElement("div");
+        item_list.classList.add('list__item');
+        item_list.innerHTML = `<p onclick="nextTo('${item}')">${item}</p>`;
+        main.appendChild(item_list);
+    }
+});
+
+
 function updateTimeDisplay() {
     var audio = document.getElementById("myAudio");
     var currentTime = audio.currentTime;
@@ -125,5 +136,13 @@ function next() {
     var link = "music/" + musics[music_running] + ".mp3";
     audio.src = link;
     document.getElementById("name").innerHTML = musics[music_running];
+    audio.play();
+}
+
+function nextTo(link){
+    document.getElementById("name").innerHTML = link;
+    var audio = document.getElementById("myAudio");
+    link = "music/" + link + ".mp3";
+    audio.src = link;
     audio.play();
 }

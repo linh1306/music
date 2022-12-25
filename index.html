@@ -22,6 +22,7 @@
 </head>
 
 <body>
+    <audio id="myAudio"  src="music/cố giang tình.mp3" ontimeupdate="updateTimeDisplay()"></audio>
     <div class="container">
         <div class="menu">
             <div id="toggle" class="mn__ls-item">
@@ -34,30 +35,32 @@
                     <li class="mn__ls-item"></li>
                 </ul>
             </nav>
-
         </div>
+
         <div class="list">
             <div class="list__hder">
-                <p>danh sách</p>
+                <p>List</p>
             </div>
-        </div>
-        <div class="play">
-            <audio id="myAudio"  src="music/lily.mp3" ontimeupdate="updateTimeDisplay()"></audio>
-        </div>
-        <div id="name">lily.mp3</div>
-        <div id="time">0:00 / 0:00</div>
-        <div class="console">
-            <ul class="csl__button">
-                <li class="button">
-                    <i class="fal fa-caret-left"></i>
-                </li>
-                <li class="button" onclick="playPause()">
-                    <i id="Pause/Play" class="fal fa-pause-circle" ></i>
-                </li>
-                <li class="button" onclick="next()">
-                    <i class="fal fa-caret-right"></i>
-                </li>
-            </ul>
+
+            <div class="scrollbar" id="style-2">
+                <div class="force-overflow"></div>
+            </div>
+            
+            <div class="console">
+                <div id="name"><p>cố giang tình</p></div>
+                <div id="time">0:00 / 0:00</div>
+                <ul class="csl__button">
+                    <li class="button">
+                        <i class="fal fa-caret-left"></i>
+                    </li>
+                    <li class="button" onclick="playPause()">
+                        <i id="Pause/Play" class="fal fa-pause-circle" ></i>
+                    </li>
+                    <li class="button" onclick="next()">
+                        <i class="fal fa-caret-right"></i>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 
