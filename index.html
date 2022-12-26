@@ -12,13 +12,13 @@
     <script src="https://code.jquery.com/jquery-3.6.2.js"
         integrity="sha256-pkn2CUZmheSeyssYw3vMp1+xyub4m+e+QK4sQskvuo4=" crossorigin="anonymous"></script>
     <title>Document</title>
-    <!-- <script>
+    <script>
         $(document).ready(function(){
             $('#toggle').click(function(){
                 $('nav').slideToggle();
             })
         })
-    </script> -->
+    </script>
 </head>
 
 <body>
@@ -30,28 +30,29 @@
             </div>
             <nav>
                 <ul id="menu__list">
-                    <li class="mn__ls-item"></li>
-                    <li class="mn__ls-item"></li>
-                    <li class="mn__ls-item"></li>
+                    <li class="mn__ls-item" onclick="add_list_name('all_musics')"><i class="fas fa-globe-americas"></i></i></i></li>
+                    <li class="mn__ls-item" onclick="add_list_name('favorites_musics')"><i class="fas fa-heart"></i></li>
+                    <li class="mn__ls-item" onclick="add_list_name('vn_musics')"><i class="fab fa-vimeo-v"></i></li>
+                    <li class="mn__ls-item" onclick="add_list_name('cn_musics')"><i class="fas fa-copyright"></i></li>
+                    <li class="mn__ls-item" onclick="add_list_name('us_musics')"><i class="fas fa-union"></i></li>
                 </ul>
             </nav>
         </div>
 
-        <div class="list">
+        <div id="main_list" class="list" >
             <div class="list__hder">
                 <p>List</p>
             </div>
 
-            <div class="scrollbar" id="style-2">
-                <!-- add item music -->
-
-                <div class="force-overflow"></div>
+            <div id="container_list">
+                <div class="scrollbar" id="style-2">
+                    <!-- add item music -->
+                    <div class="force-overflow"></div>
+                </div>
             </div>
 
             <div class="console">
-                <div id="name">
-                    <p>cố giang tình</p>
-                </div>
+                <p id="name">cố giang tình</p>
                 <div id="time">0:00 / 0:00</div>
                 <ul class="csl__button">
                     <li class="button">
@@ -68,8 +69,6 @@
         </div>
     </div>
 
-
 </body>
 <script src="js/basic.js"></script>
-
 </html>
