@@ -135,17 +135,27 @@ var mrSiro_musics = [
 
 vn_musics = vn_musics.concat(mrSiro_musics);
 favorites_musics = favorites_musics.concat(mrSiro_musics);
-const audioWf = document.querySelector('audio');
-window.AudioContext = window.AudioContext || window.webkitAudioContext;
-const ctx = new window.AudioContext();
-const analyser = ctx.createAnalyser();
-const source = ctx.createMediaElementSource(audioWf);
-source.connect(analyser);
-source.connect(ctx.destination);
-analyser.fftSize = 64;
-const bufferLength = analyser.frequencyBinCount;
 
-let dataArray = new Uint8Array(bufferLength);
+
+var arr;
+try {
+    const audioWf = document.querySelector('audio');
+    window.AudioContext = window.AudioContext || window.webkitAudioContext;
+    const ctx = new window.AudioContext();
+    const analyser = ctx.createAnalyser();
+    const source = ctx.createMediaElementSource(audioWf);
+    source.connect(analyser);
+    source.connect(ctx.destination);
+    analyser.fftSize = 64;
+    const bufferLength = analyser.frequencyBinCount;
+    var arr = new Uint8Array(bufferLength);
+} catch (error) {
+    arr = [];
+}
+
+
+
+let dataArray = arr;
 
 
 let elements_l = [];
@@ -215,9 +225,9 @@ function add_list_name(name_list) {
         tmp = us_musics;
     } else if (name_list == 'favorites_musics') {
         tmp = favorites_musics;
-    } else if(name_list  == 'mrSiro_musics'){
+    } else if (name_list == 'mrSiro_musics') {
         tmp = mrSiro_musics;
-    }else{
+    } else {
         tmp = all;
     }
     var i = 0;
@@ -252,11 +262,11 @@ function formatTime(time) {
     return minutes + ":" + seconds;
 }
 
-function show_menu(){
+function show_menu() {
     var nav = document.querySelector('nav').style.display;
-    if(nav == 'block' ){
+    if (nav == 'block') {
         document.querySelector('nav').style.display = 'none';
-    }else{
+    } else {
         document.querySelector('nav').style.display = 'block';
     }
 }
@@ -375,7 +385,7 @@ function waveform() {
     document.head.appendChild(script);
 }
 
-function remove_js(id){
+function remove_js(id) {
     clearInterval(id);
     var script = document.querySelector('script[src="js/waveform.js"]');
     script.parentNode.removeChild(script);
