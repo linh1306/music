@@ -7,34 +7,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/basic.css">
-
+    
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v5.15.4/css/all.css">
     <script src="https://code.jquery.com/jquery-3.6.2.js"
         integrity="sha256-pkn2CUZmheSeyssYw3vMp1+xyub4m+e+QK4sQskvuo4=" crossorigin="anonymous"></script>
-    <title>Document</title>
-    <script>
-        $(document).ready(function(){
-            $('#toggle').click(function(){
-                $('nav').slideToggle();
-            })
-        })
-    </script>
+    <link rel="icon" href="icon/music.png">
+    <title>music</title>
+    
 </head>
 
 <body>
     <audio id="myAudio" src="music/cố giang tình.mp3" ontimeupdate="updateTimeDisplay()"></audio>
-    <div class="container">
-        <div class="menu">
-            <div id="toggle" class="mn__ls-item">
+    <div id="container">
+        <div id="menu">
+            <div id="toggle" class="mn__ls-item" onclick="show_menu()">
                 <i class="far fa-bars"></i>
             </div>
             <nav>
                 <ul id="menu__list">
                     <li class="mn__ls-item" onclick="add_list_name('all_musics')"><i class="fas fa-globe-americas"></i></i></i></li>
                     <li class="mn__ls-item" onclick="add_list_name('favorites_musics')"><i class="fas fa-heart"></i></li>
+                    <li class="mn__ls-item" onclick="add_list_name('mrSiro_musics')"><i class="fas fa-cloud-rain"></i></i></li>
                     <li class="mn__ls-item" onclick="add_list_name('vn_musics')"><i class="fab fa-vimeo-v"></i></li>
                     <li class="mn__ls-item" onclick="add_list_name('cn_musics')"><i class="fas fa-copyright"></i></li>
                     <li class="mn__ls-item" onclick="add_list_name('us_musics')"><i class="fas fa-union"></i></li>
+                    <li class="mn__ls-item" onclick="waveform()"><i class="fas fa-waveform-path"></i></li>
                 </ul>
             </nav>
         </div>
@@ -56,10 +53,10 @@
                 <div id="time">0:00 / 0:00</div>
                 <ul class="csl__button">
                     <li class="button">
-                        <i class="fal fa-caret-left"></i>
+                        <i class="fal fa-caret-left" onclick="back()"></i>
                     </li>
                     <li class="button" onclick="playPause()">
-                        <i id="Pause/Play" class="fal fa-pause-circle"></i>
+                        <i id="Pause_Play" class="fal fa-pause-circle"></i>
                     </li>
                     <li class="button" onclick="next()">
                         <i class="fal fa-caret-right"></i>
