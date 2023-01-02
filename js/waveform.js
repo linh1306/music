@@ -1,3 +1,16 @@
+
+audioWf = document.querySelector('audio');
+window.AudioContext = window.AudioContext || window.webkitAudioContext;
+ctx = new window.AudioContext();
+analyser = ctx.createAnalyser();
+source = ctx.createMediaElementSource(audioWf);
+source.connect(analyser);
+source.connect(ctx.destination);
+analyser.fftSize = 64;
+bufferLength = analyser.frequencyBinCount;
+
+dataArray = new Uint8Array(bufferLength);
+
 play_wave_form();
 
 function play_wave_form(){
