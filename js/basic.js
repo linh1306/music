@@ -145,9 +145,10 @@ var source  ;
 var bufferLength ;
 let dataArray ;
 
-getAudio();
-
 function getAudio() {
+    var main = document.getElementById('container');
+    var item = document.getElementById('begin');
+    main.removeChild(item);
     audioWf = document.querySelector('audio');
     window.AudioContext = window.AudioContext || window.webkitAudioContext;
     ctx = new window.AudioContext();
