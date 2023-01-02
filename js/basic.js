@@ -145,6 +145,20 @@ var source  ;
 var bufferLength ;
 let dataArray ;
 
+getAudio();
+
+function getAudio() {
+    audioWf = document.querySelector('audio');
+    window.AudioContext = window.AudioContext || window.webkitAudioContext;
+    ctx = new window.AudioContext();
+    analyser = ctx.createAnalyser();
+    source = ctx.createMediaElementSource(audioWf);
+    source.connect(analyser);
+    source.connect(ctx.destination);
+    analyser.fftSize = 64;
+    bufferLength = analyser.frequencyBinCount;
+    dataArray = new Uint8Array(bufferLength);
+}
 
 let elements_l = [];
 let elements_r = [];

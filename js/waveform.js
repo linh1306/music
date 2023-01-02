@@ -1,19 +1,6 @@
-
-audioWf = document.querySelector('audio');
-window.AudioContext = window.AudioContext || window.webkitAudioContext;
-ctx = new window.AudioContext();
-analyser = ctx.createAnalyser();
-source = ctx.createMediaElementSource(audioWf);
-source.connect(analyser);
-source.connect(ctx.destination);
-analyser.fftSize = 64;
-bufferLength = analyser.frequencyBinCount;
-
-dataArray = new Uint8Array(bufferLength);
-
 play_wave_form();
 
-function play_wave_form(){
+function play_wave_form() {
     elements_l.splice(0, elements_l.length);
     elements_r.splice(0, elements_r.length);
     const ctn_left = document.querySelector('.container_left');
@@ -59,14 +46,14 @@ var intervalId = setInterval(() => {
         elements_l[bufferLength - i - 1].style.height = item * 2 + 'px';
         elements_r[i].style.height = item * 2 + 'px';
     }
-    document.getElementById('name').style.fontSize = 20 + vl_btn/1.5 + 'px';
+    document.getElementById('name').style.fontSize = 20 + vl_btn / 1.5 + 'px';
     btn.style.width = vl_btn + 150 + 'px';
     btn.style.height = vl_btn + 150 + 'px';
     btn.style.fontSize = vl_btn + 150 + 'px';
 }, 0);
 
 
-function delete_waveform(){
+function delete_waveform() {
     var name_music = document.getElementById("name").innerHTML;
     var main = document.getElementById("container");
     var item1 = document.getElementById('name');
