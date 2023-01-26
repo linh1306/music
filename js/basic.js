@@ -137,13 +137,17 @@ vn_musics = vn_musics.concat(mrSiro_musics);
 favorites_musics = favorites_musics.concat(mrSiro_musics);
 
 
+var audioWf;
+var ctx;
+var analyser;
+var source;
+var bufferLength;
+let dataArray;
+var title = 'cố giang tình';
+var album = 'all';
+let elements_l = [];
+let elements_r = [];
 
-var audioWf ;
-var ctx ;
-var analyser  ;
-var source  ;
-var bufferLength ;
-let dataArray ;
 
 function getAudio() {
     var main = document.getElementById('container');
@@ -161,8 +165,6 @@ function getAudio() {
     dataArray = new Uint8Array(bufferLength);
 }
 
-let elements_l = [];
-let elements_r = [];
 
 
 
@@ -222,16 +224,22 @@ function add_list_name(name_list) {
     tmp = [];
     if (name_list == 'vn_musics') {
         tmp = vn_musics;
+        album = 'việt nam';
     } else if (name_list == 'cn_musics') {
         tmp = tq_musics;
+        album = 'trung quốc';
     } else if (name_list == 'us_musics') {
         tmp = us_musics;
+        album = 'tiếng anh';
     } else if (name_list == 'favorites_musics') {
         tmp = favorites_musics;
-    } else if(name_list  == 'mrSiro_musics'){
+        album = 'yêu thích';
+    } else if (name_list == 'mrSiro_musics') {
         tmp = mrSiro_musics;
-    }else{
+        album = 'mr siro';
+    } else {
         tmp = all;
+        album = 'all';
     }
     var i = 0;
     tmp.forEach(element => {
@@ -265,11 +273,11 @@ function formatTime(time) {
     return minutes + ":" + seconds;
 }
 
-function show_menu(){
+function show_menu() {
     var nav = document.querySelector('nav').style.display;
-    if(nav == 'block' ){
+    if (nav == 'block') {
         document.querySelector('nav').style.display = 'none';
-    }else{
+    } else {
         document.querySelector('nav').style.display = 'block';
     }
 }
@@ -285,19 +293,35 @@ function playPause() {
     }
 }
 
+function update_navigator() {
+    if ('mediaSession' in navigator) {
+        navigator.mediaSession.metadata = new MediaMetadata({
+            title: title,
+            artist: '',
+            album: album,
+            artwork: [{ src: '../icon/music.png', sizes: '96x96', type: 'image/png' }]
+        });
+    } else {
+        console.log('This browser does not support mediaSession');
+    }
+}
+
 function next() {
     var audio = document.getElementById("myAudio");
     var name_music = document.getElementById("name").innerHTML;
     var list_music = Object.values(musics);
     var position = list_music.indexOf(name_music);
-
+    
     if (position == list_music.length - 1) position = 0;
     else position += 1;
-
+    
     var link = "music/" + list_music[position] + ".mp3";
     audio.src = link;
     document.getElementById("name").innerHTML = list_music[position];
     audio.play();
+
+    title = list_music[position];
+    update_navigator();
 }
 
 function back() {
@@ -308,11 +332,14 @@ function back() {
 
     if (position == 0) position = list_music.length - 1;
     else position -= 1;
-
+    
     var link = "music/" + list_music[position] + ".mp3";
     audio.src = link;
     document.getElementById("name").innerHTML = list_music[position];
     audio.play();
+
+    title = list_music[position];
+    update_navigator();
 }
 
 function nextTo(link) {
@@ -321,6 +348,9 @@ function nextTo(link) {
     link = "music/" + link + ".mp3";
     audio.src = link;
     audio.play();
+
+    title = link;
+    update_navigator();
 }
 
 function add_remove_heart(name_id) {
@@ -388,7 +418,7 @@ function waveform() {
     document.head.appendChild(script);
 }
 
-function remove_js(id){
+function remove_js(id) {
     clearInterval(id);
     var script = document.querySelector('script[src="js/waveform.js"]');
     script.parentNode.removeChild(script);
