@@ -149,8 +149,8 @@ let elements_l = [];
 let elements_r = [];
 
 if ('mediaSession' in navigator) {
-    navigator.mediaSession.setActionHandler('nexttrack', back());
-    navigator.mediaSession.setActionHandler('previoustrack', next());
+    navigator.mediaSession.setActionHandler('nexttrack', back);
+    navigator.mediaSession.setActionHandler('previoustrack', next);
 } else {
     console.log('This browser does not support mediaSession');
 }
