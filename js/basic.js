@@ -148,6 +148,13 @@ var album = 'all';
 let elements_l = [];
 let elements_r = [];
 
+if ('mediaSession' in navigator) {
+    navigator.mediaSession.setActionHandler('nexttrack', back());
+    navigator.mediaSession.setActionHandler('previoustrack', next());
+} else {
+    console.log('This browser does not support mediaSession');
+}
+
 
 function getAudio() {
     var main = document.getElementById('container');
@@ -299,7 +306,7 @@ function update_navigator() {
             title: title,
             artist: '',
             album: album,
-            artwork: [{ src: '../icon/music.png', sizes: '96x96', type: 'image/png' }]
+            artwork: [{ src: '../img/bgr.jpg', sizes: '96x96', type: 'image/jpg' }]
         });
     } else {
         console.log('This browser does not support mediaSession');
@@ -311,10 +318,10 @@ function next() {
     var name_music = document.getElementById("name").innerHTML;
     var list_music = Object.values(musics);
     var position = list_music.indexOf(name_music);
-    
+
     if (position == list_music.length - 1) position = 0;
     else position += 1;
-    
+
     var link = "music/" + list_music[position] + ".mp3";
     audio.src = link;
     document.getElementById("name").innerHTML = list_music[position];
@@ -332,7 +339,7 @@ function back() {
 
     if (position == 0) position = list_music.length - 1;
     else position -= 1;
-    
+
     var link = "music/" + list_music[position] + ".mp3";
     audio.src = link;
     document.getElementById("name").innerHTML = list_music[position];
@@ -343,13 +350,13 @@ function back() {
 }
 
 function nextTo(link) {
+    title = link;
     document.getElementById("name").innerHTML = link;
     var audio = document.getElementById("myAudio");
     link = "music/" + link + ".mp3";
     audio.src = link;
     audio.play();
 
-    title = link;
     update_navigator();
 }
 
