@@ -1,3 +1,9 @@
+:root{
+    --line: min( calc( 100vw - 8px ), 40px);
+}
+#container{
+    width: min( calc( 100vw - 80px ), 400px);
+}
 #begin{
     width: 100%;
     height: 100%;
@@ -7,28 +13,20 @@
 
 .list {
     background-color: rgba(0, 0, 0, 0.4);
-    width: 250px;
-    height: 420px;
-    margin: 20px auto;
     border-radius: 5px;
 }
 
 .list__hder {
-    height: 25px;
-    line-height: 25px;
+    height: var(--line);
+    line-height: var(--line);
     background-color: rgba(0, 0, 0, 0.3);
     text-align: center;
     border-radius: 5px;
 }
 
-#container_list {
-    width: 250px;
-    height: 300px;
-}
-
 .scrollbar {
     float: left;
-    height: 300px;
+    aspect-ratio: 5/7;
     width: 100%;
     overflow-y: scroll;
 }
@@ -44,11 +42,11 @@
 }
 
 .list__item {
-    height: 25px;
+    height: var(--line);
     margin-top: 2px;
     background-color: rgba(0, 0, 0, 0.2);
     border-radius: 5px;
-    line-height: 25px;
+    line-height: var(--line);
     display: flex;
     flex-flow: row;
 }
@@ -61,43 +59,41 @@
 
 .list__item i {
     margin: auto 5px auto 5px;
-    font-size: 50%;
+    font-size: calc(var(--line)/2);
 }
 
 .list__item p {
-    font-size: 75%;
+    font-size: calc(var(--line)/2);
 }
 
-.list__item-name:hover {
+.list__item-name:hover ~ i{
     background-color: rgba(0, 0, 0, 0.2);
     color: rgba(73, 134, 162, 0.693);
     cursor: pointer;
 }
 
 
-.bt_list_item:hover {
+.bt_list_item:hover{
     color: rgba(73, 134, 162, 0.693);
     cursor: pointer;
 }
 
 #menu {
-    margin-left: calc(50% + 135px);
+    margin-left: calc(min( calc( 100vw - 80px ), 400px) + 10px);
     position: absolute;
 }
 
 
 .mn__ls-item {
-    width: 30px;
-    height: 30px;
+    width: var(--line);
+    height: var(--line);
     border-radius: 50%;
-    font-size: 10px;
-    line-height: 30px;
+    font-size: calc(var(--line)/3);
+    line-height: var(--line);
     text-align: center;
     background-color: rgba(0, 0, 0, 0.4);
     margin-top: 5px;
 }
-
-
 
 .mn__ls-item:hover {
     background-color: rgba(0, 0, 0, 0.2);
@@ -114,7 +110,6 @@
 }
 
 #time {
-    font-size: smaller;
     text-align: center;
 }
 
@@ -214,4 +209,18 @@
     line-height: 50px;
     right: 20px;
     z-index: 1;
+}
+
+
+@media only screen and (max-width: 400px){
+    :root{
+        --line:30px;
+    }
+    #menu {
+        margin-left: calc(min( calc( 100vw - 80px ), 400px) + 5px);
+        position: absolute;
+    }
+    .reponsive{
+        display: none;
+    }
 }

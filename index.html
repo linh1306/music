@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/basic.css">
     <meta property="og:image" content="icon/music.png">
@@ -13,12 +13,12 @@
         integrity="sha256-pkn2CUZmheSeyssYw3vMp1+xyub4m+e+QK4sQskvuo4=" crossorigin="anonymous"></script>
     <link rel="icon" href="icon/music.png">
     <title>music</title>
-    
-</head>
 
+</head>
 
 <body>
     <audio id="myAudio" src="music/cố giang tình.mp3" ontimeupdate="updateTimeDisplay()"></audio>
+    <audio id="myAudio" src="music/" ontimeupdate="updateTimeDisplay()"></audio>
     <div id="container">
         <div id="begin" onclick="getAudio()"></div>
         <div id="menu">
@@ -27,18 +27,21 @@
             </div>
             <nav>
                 <ul id="menu__list">
-                    <li class="mn__ls-item" onclick="add_list_name('all_musics')"><i class="fas fa-globe-americas"></i></i></i></li>
-                    <li class="mn__ls-item" onclick="add_list_name('favorites_musics')"><i class="fas fa-heart"></i></li>
-                    <li class="mn__ls-item" onclick="add_list_name('mrSiro_musics')"><i class="fas fa-cloud-rain"></i></i></li>
+                    <li class="mn__ls-item" onclick="add_list_name('all_musics')"><i
+                            class="fas fa-globe-americas"></i></i></i></li>
+                    <li class="mn__ls-item" onclick="add_list_name('favorites_musics')"><i class="fas fa-heart"></i>
+                    </li>
+                    <li class="mn__ls-item" onclick="add_list_name('mrSiro_musics')"><i
+                            class="fas fa-cloud-rain"></i></i></li>
                     <li class="mn__ls-item" onclick="add_list_name('vn_musics')"><i class="fab fa-vimeo-v"></i></li>
                     <li class="mn__ls-item" onclick="add_list_name('cn_musics')"><i class="fas fa-copyright"></i></li>
                     <li class="mn__ls-item" onclick="add_list_name('us_musics')"><i class="fas fa-union"></i></li>
-                    <li class="mn__ls-item" onclick="waveform()"><i class="fas fa-waveform-path"></i></li>
+                    <li class="mn__ls-item reponsive" onclick="waveform()"><i class="fas fa-waveform-path"></i></li>
                 </ul>
             </nav>
         </div>
 
-        <div id="main_list" class="list" >
+        <div id="main_list" class="list">
             <div class="list__hder">
                 <p>List</p>
             </div>
@@ -68,6 +71,7 @@
         </div>
     </div>
 
+    <script src="js/init.js"></script>
+    <script src="js/basic.js"></script>
 </body>
-<script src="js/basic.js"></script>
 </html>
